@@ -26,15 +26,27 @@ def uploader():
     if request.method=="POST":
         print("coming here")
         f = request.files['file']
+        session["status"] = "play"
         if(f):
             filename = os.path.join(Upload_dir, f.filename)
             session["filename"] = filename
             f.save(filename)
         else:
             session["filename"] = os.path.join(Upload_dir, "bridge.mp4")
-        return redirect(url_for('home'))
+        return redirect(url_for('home', status=session["status"]))
 
     return render_template("upload.html")
+
+# @app.route('/play/', methods=["POST", "GET"])
+# def play():
+#     if request.method=="POST":
+#         session["status"] = "play"
+
+# @app.route('/pause/', methods=["POST", "GET"])
+# def pause():
+#     if request.method=="POST":
+#         session["status"] = "pause"
+
 
 
 if __name__=='__main__':
@@ -45,5 +57,4 @@ if __name__=='__main__':
     import cv2
     from src.input_retrieval import *
 
-    filename = ""
     socketio.run(app, debug=True)
