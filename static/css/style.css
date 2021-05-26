@@ -2,29 +2,139 @@
 ib
 video
 id: play pause stop */
-
+*,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #ffffff;
+}
 .Banner {
-    background-color: gray;
-    color:white;
-    text-align: center;
-    padding: 10px;
-    margin: auto;
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+  background-color: #6c079b;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 3rem;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black; */
+}
+.btn {
+  margin-top: 1rem;
+  background: #f70000;
+  background-image: -webkit-linear-gradient(top, #f70000, #780606);
+  background-image: -moz-linear-gradient(top, #f70000, #780606);
+  background-image: -ms-linear-gradient(top, #f70000, #780606);
+  background-image: -o-linear-gradient(top, #f70000, #780606);
+  background-image: linear-gradient(to bottom, #f70000, #780606);
+  -webkit-border-radius: 13;
+  -moz-border-radius: 13;
+  border-radius: 13px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 24px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
 
+.btn:hover {
+  transition: all 1s;
+  background: #0d4263;
+  background-image: -webkit-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: -moz-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: -ms-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: -o-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: linear-gradient(to bottom, #0d4263, #1b70a8);
+  text-decoration: none;
+}
 
-#frame {
-    width: 640px;
-    height: 480px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.video1 {
+  width: 640px;
+  height: 480px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.486);
+  border: 5px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+img {
+  height: 100%;
+  width: 100%;
 }
 
 .btns {
-    text-align: center;
+  text-align: center;
+}
+.form-wrapper {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  background-color: rgb(231, 226, 226);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form {
+  border: 3px solid black;
+  height: auto;
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.377);
+  color: white;
+  overflow: hidden;
+  background-color: white;
+}
+.form .heading {
+  padding: 2rem;
+  background-color: #6c079b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit {
+  background: #9700f5;
+  background-image: -webkit-linear-gradient(top, #9700f5, #2c0678);
+  background-image: -moz-linear-gradient(top, #9700f5, #2c0678);
+  background-image: -ms-linear-gradient(top, #9700f5, #2c0678);
+  background-image: -o-linear-gradient(top, #9700f5, #2c0678);
+  background-image: linear-gradient(to bottom, #9700f5, #2c0678);
+  -webkit-border-radius: 13;
+  -moz-border-radius: 13;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 7px 15px 7px 15px;
+  display: block;
+  text-decoration: none;
 }
 
+.submit:hover {
+  background: #0d4263;
+  background-image: -webkit-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: -moz-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: -ms-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: -o-linear-gradient(top, #0d4263, #1b70a8);
+  background-image: linear-gradient(to bottom, #0d4263, #1b70a8);
+  text-decoration: none;
+}
+input {
+  color: white;
+  background-color: rgb(123, 12, 214);
+  border: 2px solid black;
+}
+span {
+  color: black;
+  /* text-align: center; */
+}
+button {
+  margin: 1rem 0;
+}

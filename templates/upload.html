@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
     <title>Traffic Monitoring</title>
-</head>
-<body>
-    <h1> Upload the video here</h1>
-    <form action="http://localhost:5000/" method = "POST" enctype = "multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit"> SUBMIT </button>
-    </form>
-</body>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <div class="form">
+        <div class="heading">
+          <h1>Upload the video here</h1>
+        </div>
+        <div class="upload">
+          <form
+            action="http://localhost:5000/"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <span>Select File: <input type="file" name="file" /></span>
+            <button type="submit" class="submit">SUBMIT</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
