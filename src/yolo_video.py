@@ -328,12 +328,12 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 		# previous_frame_detections.append(spatial.KDTree(current_detections))
 		previous_frame_detections.append(current_detections)
 
-		end_time += int(time.time())
+		end_time += time.time()
 		summary = {}
-		summary["Total Time"] = end_time-start_time
+		summary["Total Time"] = int(end_time)-start_time
 		summary["Total Vehicles"] = vehicle_count
-		summary["Average Vehicles/sec"] = vehicle_count/max(end_time-start_time,1)
-		summary["Max Vehicles in frame/sec"] = maxVehicleInFrame/max(end_time-start_time,1)
+		summary["Average Vehicles/sec"] = vehicle_count/max(int(end_time)-start_time,1)
+		summary["Max Vehicles in frame/sec"] = maxVehicleInFrame/max(int(end_time)-start_time,1)
 		with open("log.json", "w+") as f:
 			json.dump(summary,f)
 	# release the file pointers

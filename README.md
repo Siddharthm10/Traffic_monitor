@@ -1,28 +1,22 @@
-# Traffic Analyst
-- This is a task given for the internship at ResoluteAI.in
+# Traffic Monitoring System
+This is the repository for the task provided by resoluteAI.in Internship
+Here, I have used YOLOV3 for performing the task. The accuracy is pretty high with a little compromise in speed. With GPU it gives good performance i.e. 7-10 fps.
 
-### Todos:
-- [x] - Research 
-- [x] - Vehicle detection
-	- [x] - Research for Good models
-    	- YOLOV3
-    	- MobileNet SSD 
-	- [x] - Implement the model
-- [x] - Motion Tracking
-- [ ] - Lane Segmentation
-	- [ ] - Find Models for lane segmentation
-- [ ] - Density Calculation
-	- [ ] - No. of Cars in certain lane per sec
-- [x] - Web Implementation
-	- [x] - Flask Server
-	- [x] - A way to upload the video.
-	- [x] - Process the video with the algo prepared above.
+### Step to run the server
+Step 1: Install all the dependencies into the sytem.
+	`pip install -r requirements.txt`
+
+Step 2: After installing the requirements, run the server:
+	`python3 app.py`
+
+Step 3: Some configuration can be done for the defaults, which can be found [here](config/config.json)
+
+The server is up and running visit: http://localhost:5000/ to see the task.
 
 
-### Tasks:
-- [ ] - Vehicle detection
-- [ ] - Find Number of vehicles total
-- [ ] - Moving Vehicles count
-- [ ] - Stopped Vehicles count
-- [ ] - Play, Pause, Stop Video processing
-- [ ] - Returns to homepage on clicking Stop Button
+### After clicking the stop button the summary can be accessed.
+- Click on the stop button to see the last run's summary (Can visit the home page as well)
+
+
+## Thank YOU :) 
+Stay Safe, Stay healthy
