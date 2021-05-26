@@ -1,0 +1,16 @@
+{
+    "yolo_video":{
+        "list_of_vehicles": ["bicycle","car","motorbike","bus","truck", "train"],
+        "FRAMES_BEFORE_CURRENT":10 ,
+        "inputWidth":416,
+        "inputHeight":416
+    },
+    "args":{
+        "yolo":"yolo-coco",
+        "input": "testset/bridge.mp4",
+        "output": "output/testrun.mp4",
+        "confidence":0.5,
+        "threshold":0.3,
+        "use_gpu":1
+    }
+}
