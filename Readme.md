@@ -2,20 +2,21 @@
 - This is a task given for the internship at ResoluteAI.in
 
 ### Todos:
-- [ ] - Research 
-- [ ] - Vehicle detection
-	- [ ] - Research for Good models
-	- [ ] - Implement the models 
-- [ ] - Motion Tracking
-	- [ ] - Try Pyimage algo
+- [x] - Research 
+- [x] - Vehicle detection
+	- [x] - Research for Good models
+    	- YOLOV3
+    	- MobileNet SSD 
+	- [x] - Implement the model
+- [x] - Motion Tracking
 - [ ] - Lane Segmentation
 	- [ ] - Find Models for lane segmentation
 - [ ] - Density Calculation
 	- [ ] - No. of Cars in certain lane per sec
-- [ ] - Web Implementation
-	- [ ] - Flask Server
-	- [ ] - A way to upload the video.
-	- [ ] - Process the video with the algo prepared above.
+- [x] - Web Implementation
+	- [x] - Flask Server
+	- [x] - A way to upload the video.
+	- [x] - Process the video with the algo prepared above.
 
 
 ### Tasks:

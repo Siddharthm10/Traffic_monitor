@@ -149,8 +149,7 @@ def count_vehicles(idxs, boxes, classIDs, vehicle_count, previous_frame_detectio
 	return vehicle_count, current_detections
 
 
-def Traffic_analyser():
-
+def Traffic_analyser(filename="testset/bridge.mp4"):
 	import cv2
 	import numpy as np
 	import json
@@ -171,7 +170,7 @@ def Traffic_analyser():
 	LABELS = open(data["args"]["yolo"] + "/coco.names").read().strip().split("\n")
 	weightsPath = data["args"]["yolo"] + "/yolov3.weights"
 	configPath = data["args"]["yolo"] + "/yolov3.cfg"
-	inputVideoPath = data["args"]["input"]
+	inputVideoPath = filename
 	outputVideoPath = data["args"]["output"]
 	preDefinedConfidence = data["args"]["confidence"]
 	preDefinedThreshold = data["args"]["threshold"]
