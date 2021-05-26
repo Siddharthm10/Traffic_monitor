@@ -20,9 +20,9 @@
 
 
 ### Tasks:
-- [ ] - Vehicle detection
-- [ ] - Find Number of vehicles total
+- [x] - Vehicle detection
+- [x] - Find Number of vehicles total
 - [ ] - Moving Vehicles count
 - [ ] - Stopped Vehicles count
-- [ ] - Play, Pause, Stop Video processing
-- [ ] - Returns to homepage on clicking Stop Button
+- [x] - Play, Pause, Stop Video processing
+- [x] - Returns to homepage on clicking Stop Button

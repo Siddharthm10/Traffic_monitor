@@ -4,6 +4,7 @@ import cv2
 import base64
 from src.yolo_video import Traffic_analyser
 import numpy as np
+import json
 from src.input_retrieval import *
 
 app = Flask(__name__)
@@ -34,7 +35,10 @@ def uploader():
             session["filename"] = os.path.join(Upload_dir, "bridge.mp4")
         return redirect(url_for('home'))
 
-    return render_template("upload.html")
+    with open("log.json", "r+") as f:
+        summary = json.load(f)
+
+    return render_template("upload.html",summary=summary)
 
 
 

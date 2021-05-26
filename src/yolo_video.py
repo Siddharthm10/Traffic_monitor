@@ -6,8 +6,24 @@ def displayVehicleCount(frame, vehicle_count):
 	import cv2
 	cv2.putText(
 		frame, #Image
-		'Detected Vehicles: ' + str(vehicle_count), #Label
+		'Total Detected Vehicles: ' + str(vehicle_count), #Label
 		(20, 20), #Position
+		cv2.FONT_HERSHEY_SIMPLEX, #Font
+		0.8, #Size
+		(0, 0xFF, 0), #Color
+		2, #Thickness
+		cv2.FONT_HERSHEY_COMPLEX_SMALL,
+		)
+
+# PURPOSE: Displays the vehicle count on the top-left corner of the frame
+# PARAMETERS: Frame on which the count is displayed, the count number of vehicles 
+# RETURN: N/A
+def displayVehicleinFrameCount(frame, vehicle_count):
+	import cv2
+	cv2.putText(
+		frame, #Image
+		'Total Vehicles in frame: ' + str(vehicle_count), #Label
+		(20, 40), #Position
 		cv2.FONT_HERSHEY_SIMPLEX, #Font
 		0.8, #Size
 		(0, 0xFF, 0), #Color
@@ -211,6 +227,9 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 	num_frames, vehicle_count = 0, 0
 	writer = initializeVideoWriter(video_width, video_height, videoStream, outputVideoPath)
 	start_time = int(time.time())
+	end_time = 0
+	maxVehicleInFrame = 0
+	vehicles_in_frame = 0
 	# loop over frames from the video file stream
 	while True:
 		print("================NEW FRAME================")
@@ -218,8 +237,7 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 		print("FRAME:\t", num_frames)
 		# Initialization for each iteration
 		boxes, confidences, classIDs = [], [], [] 
-		vehicle_crossed_line_flag = False 
-
+		# vehicles_in_frame = 0
 		#Calculating fps each second
 		start_time, num_frames = displayFPS(start_time, num_frames)
 		# read the next frame from the file
@@ -252,6 +270,8 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 				# filter out weak predictions by ensuring the detected
 				# probability is greater than the minimum probability
 				if confidence > preDefinedConfidence:
+					# vehicles_in_frame+=1
+
 					# scale the bounding box coordinates back relative to
 					# the size of the image, keeping in mind that YOLO
 					# actually returns the center (x, y)-coordinates of
@@ -275,25 +295,21 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 					confidences.append(float(confidence))
 					classIDs.append(classID)
 
-		# # Changing line color to green if a vehicle in the frame has crossed the line 
-		# if vehicle_crossed_line_flag:
-		# 	cv2.line(frame, (x1_line, y1_line), (x2_line, y2_line), (0, 0xFF, 0), 2)
-		# # Changing line color to red if a vehicle in the frame has not crossed the line 
-		# else:
-		# 	cv2.line(frame, (x1_line, y1_line), (x2_line, y2_line), (0, 0, 0xFF), 2)
-
 		# apply non-maxima suppression to suppress weak, overlapping
 		# bounding boxes
 		idxs = cv2.dnn.NMSBoxes(boxes, confidences, preDefinedConfidence,
 			preDefinedThreshold)
-
+		
 		# Draw detection box 
 		drawDetectionBoxes(idxs, boxes, classIDs, confidences, frame, LABELS, COLORS)
 
 		vehicle_count, current_detections = count_vehicles(idxs, boxes, classIDs, vehicle_count, previous_frame_detections, frame, LABELS, data)
-
+		vehicles_in_frame = len(idxs)
+		if(vehicles_in_frame>maxVehicleInFrame):
+			maxVehicleInFrame = vehicles_in_frame
 		# Display Vehicle Count if a vehicle has passed the line 
 		displayVehicleCount(frame, vehicle_count)
+		displayVehicleinFrameCount(frame, vehicles_in_frame)
 
 		# write the output frame to disk
 		writer.write(frame)
@@ -312,37 +328,23 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 		# previous_frame_detections.append(spatial.KDTree(current_detections))
 		previous_frame_detections.append(current_detections)
 
+		end_time += int(time.time())
+		summary = {}
+		summary["Total Time"] = end_time-start_time
+		summary["Total Vehicles"] = vehicle_count
+		summary["Average Vehicles/sec"] = vehicle_count/max(end_time-start_time,1)
+		summary["Max Vehicles in frame/sec"] = maxVehicleInFrame/max(end_time-start_time,1)
+		with open("log.json", "w+") as f:
+			json.dump(summary,f)
 	# release the file pointers
-	print("[INFO] cleaning up...")
+		# f.write(f"""[SUMMARY]
+		# 		Total time: {end_time-start_time}s
+		# 		Total Vehicles: {vehicle_count} vehicles
+		# 		Average Vehicles/sec: {vehicle_count/(end_time-start_time)} vehicles/sec
+		# 		Max Vehicles in frame/sec: {maxVehicleInFrame/(end_time-start_time)} vehicles/sec
+		# 					""")
+
 	writer.release()
 	videoStream.release()
 
 
-
-# if __name__=="__main__":
-# 	# import the necessary packages
-# 	import numpy as np
-# 	import imutils
-# 	import time
-# 	from scipy import spatial
-# 	import json
-# 	import cv2
-# 	from input_retrieval import *
-
-# 	## GLOBAL VARIABLES
-# 	#All these classes will be counted as 'vehicles'
-# 	list_of_vehicles = ["bicycle","car","motorbike","bus","truck", "train"]
-
-# 	# Setting the threshold for the number of frames to search a vehicle for
-# 	FRAMES_BEFORE_CURRENT = 10  
-# 	inputWidth, inputHeight = 416, 416
-
-# 	#Parse command line arguments and extract the values required
-# 	LABELS, weightsPath, configPath, inputVideoPath, outputVideoPath,\
-# 		preDefinedConfidence, preDefinedThreshold, USE_GPU= parseCommandLineArguments()
-
-# 	# Initialize a list of colors to represent each possible class label
-# 	np.random.seed(42)
-# 	COLORS = np.random.randint(0, 255, size=(len(LABELS), 3),dtype="uint8")
-
-# 	Traffic_analyser()
