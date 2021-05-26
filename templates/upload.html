@@ -6,24 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/css/style.css" />
     <title>Traffic Monitoring</title>
-  </head>
-  <body>
-    <div class="form-wrapper">
-      <div class="form">
-        <div class="heading">
-          <h1>Upload the video here</h1>
-        </div>
-        <div class="upload">
-          <form
-            action="http://localhost:5000/"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <span>Select File: <input type="file" name="file" /></span>
-            <button type="submit" class="submit">SUBMIT</button>
-          </form>
-        </div>
-      </div>
+
+</head>
+<body>
+    <h1> Upload the video here</h1>
+    <form action="http://localhost:5000/" method = "POST" enctype = "multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit"> SUBMIT </button>
+    </form>
+
+    <div>
+        <h4>Summary for last session</h4>
+        <table>
+            <tr><th>Total Time</th> <th>{{ summary["Total Time"]}}</th></tr>
+            <tr><th>Total Vehicles</th> <th>{{ summary["Total Vehicles"]}}</th></tr>
+            <tr><th>Average Vehicles/sec</th> <th>{{ summary["Average Vehicles/sec"]}}</th></tr>
+            <tr><th>Max Vehicles in frame/sec</th> <th>{{ summary["Max Vehicles in frame/sec"]}}</th></tr>
+        </table>
     </div>
-  </body>
+</body>
 </html>
