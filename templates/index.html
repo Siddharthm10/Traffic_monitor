@@ -12,22 +12,10 @@
         <h1>Traffic Monitoring System</h1>
     </div>
     <div class="ib">
-        <div>
-            <h3>Status: <span id="status">{{ status }}</span></h3>
-        </div>
         <div class="video1">
             <img id="frame" src="{{ url_for('feed') }}"/>
         </div>
         <div class="btns">
-            <!-- <form action="/play/" method="POST">
-                <button name="play" type="submit">Play</button>
-            </form> -->
-            <!-- <form action="/pause/" method="POST">
-                <button name="pause" type="submit">Pause</button>
-            </form> -->
-            <!-- <form action="/" method="POST">
-                <button name="stop" type="submit">Stop</button>
-            </form> -->
             <a href="{{ url_for('uploader') }}"><button>STOP</button></a>
         </div>
     </div>
