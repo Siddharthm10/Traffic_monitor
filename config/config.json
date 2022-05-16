@@ -1,6 +1,6 @@
 {
     "yolo_video":{
-        "list_of_vehicles": ["bicycle","car","motorbike","bus","truck", "train"],
+        "list_of_vehicles": ["bicycle","car","motorbike","bus","truck"],
         "FRAMES_BEFORE_CURRENT":10 ,
         "inputWidth":416,
         "inputHeight":416

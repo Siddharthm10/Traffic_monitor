@@ -1,5 +1,5 @@
 # Traffic Analyst
-- This is a task given for the internship at ResoluteAI.in
+<!-- - This is a task given for the internship at ResoluteAI.in -->
 
 ### Todos:
 - [x] - Research 
@@ -24,5 +24,5 @@
 - [x] - Find Number of vehicles total
 - [ ] - Moving Vehicles count
 - [ ] - Stopped Vehicles count
-- [x] - Play, Pause, Stop Video processing
+- [ ] - Play, Pause, Stop Video processing
 - [x] - Returns to homepage on clicking Stop Button

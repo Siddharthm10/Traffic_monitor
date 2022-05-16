@@ -15,6 +15,16 @@
       <div class="video1">
         <img id="frame" src="{{ url_for('feed')}}" />
       </div>
+      <!-- <div>
+        <h4>Summary for This session:</h4>
+        <table>
+            <tr><td>Total Time</td> <td>{{ summary["Total Time"]}}</td></tr>
+            <tr><td>Total Vehicles</td> <td>{{ summary["Total Vehicles"]}}</td></tr>
+            <tr><td>Average Vehicles/sec</td> <td>{{ summary["Average Vehicles/sec"]}}</td></tr>
+            <tr><td>Max Vehicles in frame/sec</td><td>{{ summary["Max Vehicles in frame/sec"]}}</td></tr>
+        </table>
+      </div> -->
+    </div>
       <div class="btns">
         <a href="{{ url_for('uploader') }}"
           ><button class="btn">STOP</button></a

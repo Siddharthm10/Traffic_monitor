@@ -79,7 +79,7 @@ def drawDetectionBoxes(idxs, boxes, classIDs, confidences, frame, LABELS, COLORS
 			cv2.putText(frame, text, (x, y - 5),
 				cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 			#Draw a green dot in the middle of the box
-			cv2.circle(frame, (x + (w//2), y+ (h//2)), 2, (0, 0xFF, 0), thickness=2)
+			# cv2.circle(frame, (x + (w//2), y+ (h//2)), 2, (0, 0xFF, 0), thickness=2)
 
 # PURPOSE: Initializing the video writer with the output video path and the same number
 # of fps, width and height as the source video 
@@ -227,7 +227,7 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 	num_frames, vehicle_count = 0, 0
 	writer = initializeVideoWriter(video_width, video_height, videoStream, outputVideoPath)
 	start_time = int(time.time())
-	end_time = 0
+	end_time = int(time.time())
 	maxVehicleInFrame = 0
 	vehicles_in_frame = 0
 	# loop over frames from the video file stream
@@ -239,7 +239,7 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 		boxes, confidences, classIDs = [], [], [] 
 		# vehicles_in_frame = 0
 		#Calculating fps each second
-		start_time, num_frames = displayFPS(start_time, num_frames)
+		# start_time, num_frames = displayFPS(start_time, num_frames)
 		# read the next frame from the file
 		(grabbed, frame) = videoStream.read()
 
@@ -328,9 +328,9 @@ def Traffic_analyser(filename="testset/bridge.mp4"):
 		# previous_frame_detections.append(spatial.KDTree(current_detections))
 		previous_frame_detections.append(current_detections)
 
-		end_time += time.time()
+		end_time = int(time.time())
 		summary = {}
-		summary["Total Time"] = int(end_time)-start_time
+		summary["Total Time"] = (end_time-start_time)
 		summary["Total Vehicles"] = vehicle_count
 		summary["Average Vehicles/sec"] = vehicle_count/max(int(end_time)-start_time,1)
 		summary["Max Vehicles in frame/sec"] = maxVehicleInFrame/max(int(end_time)-start_time,1)
